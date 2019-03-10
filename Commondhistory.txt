@@ -1,0 +1,16 @@
+Microsoft Windows [Version 10.0.17134.590]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Users\lenovo>cd Documents
+
+C:\Users\lenovo\Documents>cd "Python-Django Projects"
+
+C:\Users\lenovo\Documents\Python-Django Projects>git clone https://github.com/AshutoshAgrahari/Python-Django.git
+Cloning into 'Python-Django'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+
+C:\Users\lenovo\Documents\Python-Django Projects>
