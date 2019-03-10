@@ -1,10 +1,15 @@
+# Source :https://www.youtube.com/watch?v=yyt3tQYW3g0
+
+#### Open Windows Command Prompt ####
 Microsoft Windows [Version 10.0.17134.590]
 (c) 2018 Microsoft Corporation. All rights reserved.
 
+#### Setting teh Python-Django projects in documents ####
 C:\Users\lenovo>cd Documents
 
 C:\Users\lenovo\Documents>cd "Python-Django Projects"
 
+#### Create Git Repos and clone the repos into Python-Django Projects folder ####
 C:\Users\lenovo\Documents\Python-Django Projects>git clone https://github.com/AshutoshAgrahari/Python-Django.git
 Cloning into 'Python-Django'...
 remote: Enumerating objects: 3, done.
@@ -13,4 +18,580 @@ remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 Unpacking objects: 100% (3/3), done.
 
-C:\Users\lenovo\Documents\Python-Django Projects>
+#### Open Python-Django folder of git repos and run below git commond for testing ####
+C:\Users\lenovo\Documents\Python-Django Projects>cd Python-Django
+
+C:\Users\lenovo\Documents\Python-Django Projects\Python-Django>git add .
+
+C:\Users\lenovo\Documents\Python-Django Projects\Python-Django>git commit -a -m "Added Commond File for Django + Git setup"
+[master 651be72] Added Commond File for Django + Git setup
+ 1 file changed, 16 insertions(+)
+ create mode 100644 Commondhistory.txt
+
+C:\Users\lenovo\Documents\Python-Django Projects\Python-Django>git push
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 630 bytes | 126.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/AshutoshAgrahari/Python-Django.git
+   eb3bc6d..651be72  master -> master
+
+C:\Users\lenovo\Documents\Python-Django Projects\Python-Django>git pull
+Already up to date.
+
+C:\Users\lenovo\Documents\Python-Django Projects\Python-Django>
+
+
+
+
+
+
+
+
+############## Step 2 ####################
+
+# Open Windows PowerShell with administrator access
+
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\WINDOWS\system32> cd C:\
+PS C:\> Set-ExecutionPolicy Unrestricted
+
+Execution Policy Change
+The execution policy helps protect you from scripts that you do not trust. Changing the execution policy might expose
+you to the security risks described in the about_Execution_Policies help topic at
+https:/go.microsoft.com/fwlink/?LinkID=135170. Do you want to change the execution policy?
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"): y
+PS C:\>
+
+PS C:\> cd .\Users\
+PS C:\Users> ls
+
+
+    Directory: C:\Users
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       27/07/2017     22:14                Default.migrated
+d-----       24/11/2018     18:15                lenovo
+d-r---       10/07/2018     11:57                Public
+
+
+PS C:\Users> cd .\lenovo\
+PS C:\Users\lenovo> ls
+
+
+    Directory: C:\Users\lenovo
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       31/08/2018     22:47                .android
+d-----       12/08/2018     00:03                .AndroidStudio3.1
+d-----       01/09/2018     00:43                .atom
+d-----       07/10/2018     00:48                .conda
+d-----       29/01/2017     15:06                .eclipse
+d-----       29/02/2016     13:56                .idlerc
+d-----       07/10/2018     02:42                .ipynb_checkpoints
+d-----       29/10/2016     14:40                .ipython
+d-----       04/02/2017     13:25                .ivy2
+d-----       06/10/2018     23:54                .julia
+d-----       07/10/2018     01:13                .jupyter
+d-----       11/04/2016     21:06                .LSC
+d-----       29/01/2017     14:34                .m2
+d-----       06/01/2019     20:47                .matplotlib
+d-----       20/08/2016     18:24                .oracle_jre_usage
+d-----       29/01/2017     17:12                .p2
+d-----       11/04/2016     21:06                .QtWebEngineProcess
+d-----       04/02/2017     13:25                .sbt
+d-----       03/02/2017     21:46                .scalaide
+d-----       20/08/2017     21:23                .VirtualBox
+d-r---       06/02/2019     11:11                3D Objects
+d-----       22/01/2019     20:23                akagrGoogleDrive
+d-----       31/12/2018     22:50                Anaconda3
+d-----       07/11/2016     23:48                Anaconda33
+d-r---       06/02/2019     11:11                Contacts
+d-r---       10/03/2019     13:48                Desktop
+d-r---       10/03/2019     14:06                Documents
+d-r---       10/03/2019     14:36                Downloads
+d-----       29/01/2017     13:55                eclipse
+d-----       29/01/2017     14:25                Eclipse Workspace
+d-----       13/08/2017     12:57                Evernote
+d-r---       06/02/2019     11:11                Favorites
+d-r---       24/11/2018     18:21                Google Drive
+d-r---       06/02/2019     11:11                Links
+d-----       04/02/2017     20:17                metastore_db
+d-----       20/08/2016     18:34                mettl_logs
+d-r---       06/02/2019     11:11                Music
+d-r---       10/03/2019     13:55                OneDrive
+d-r---       06/02/2019     11:11                Pictures
+d-----       28/02/2016     10:07                REACHit
+d-----       27/07/2017     22:14                Roaming
+d-r---       06/02/2019     11:11                Saved Games
+d-r---       06/02/2019     11:11                Searches
+d-----       28/01/2017     16:26                spark-2.1.0-bin-hadoop2.7
+d-----       09/03/2016     22:42                Tracing
+d-r---       06/02/2019     11:11                Videos
+d-----       20/08/2017     21:08                VirtualBox VMs
+d-----       15/04/2018     15:04                wekafiles
+-a----       09/06/2018     22:36            155 .bash_history
+-a----       15/07/2018     02:15            242 .gitconfig
+-a----       06/08/2017     21:54           4024 .scala_history
+-a----       05/02/2017     04:02           9222 .spark_history
+-a----       04/02/2017     20:18          20137 derby.log
+-a----       25/08/2017     00:41            600 PUTTY.RND
+-a----       01/10/2018     21:05         302521 rodeo.log
+-a----       02/09/2018     21:16        1048597 rodeo1.log
+-a----       07/10/2018     03:07          15149 Untitled.ipynb
+
+
+PS C:\Users\lenovo> cd .\Documents\
+PS C:\Users\lenovo\Documents> ls
+
+
+    Directory: C:\Users\lenovo\Documents
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       05/01/2019     19:30                Aap Ki Dukan
+d-----       18/10/2018     20:04                Custom Office Templates
+d-----       10/09/2016     11:17                HDFC
+d-----       06/10/2018     22:02                Julia-1.0.1
+d-----       24/08/2017     23:50                MobaXterm
+d---s-       18/06/2016     06:12                My Data Sources
+d-----       25/06/2016     16:13                My sql query file
+d-----       27/06/2016     22:30                My Tableau Repository
+d-----       30/03/2018     20:55                Notepad++
+d-----       31/12/2018     23:20                Python Scripts
+d-----       10/03/2019     14:12                Python-Django Projects
+d-----       05/06/2018     21:07                R
+d-----       15/12/2018     22:41                R Projects
+d-----       20/08/2017     20:05                Virtual Machines
+d-----       08/04/2018     19:22                Zerodha
+-a----       05/01/2019     19:24              0 .Rhistory
+-a----       08/03/2019     16:16           9372 Book1.xlsx second.xlsx
+-a----       08/03/2019     17:07          11051 Book1.xlsx three.xlsx
+-a----       07/07/2017     23:54         297915 Family Photo.pdf
+
+
+PS C:\Users\lenovo\Documents> cd '.\Python-Django Projects\'
+PS C:\Users\lenovo\Documents\Python-Django Projects> ls
+
+
+    Directory: C:\Users\lenovo\Documents\Python-Django Projects
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       10/03/2019     15:41                Python-Django
+
+
+PS C:\Users\lenovo\Documents\Python-Django Projects> cd .\Python-Django\
+PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django> ls
+
+
+    Directory: C:\Users\lenovo\Documents\Python-Django Projects\Python-Django
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----       10/03/2019     15:44           2540 Commondhistory.txt
+-a----       10/03/2019     14:10             55 README.md
+
+
+PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django> python -V
+Python 3.5.3 :: Anaconda 4.4.0 (64-bit)
+PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django> pip -V
+pip 19.0.3 from c:\users\lenovo\anaconda3\lib\site-packages\pip (python 3.5)
+PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django> pip freeze
+alabaster==0.7.10
+anaconda-clean==1.0
+anaconda-client==1.6.3
+anaconda-navigator==1.6.2
+anaconda-project==0.6.0
+argcomplete==1.0.0
+asn1crypto==0.22.0
+astroid==1.4.9
+astropy==1.3.2
+Babel==2.4.0
+backports.shutil-get-terminal-size==1.0.0
+beautifulsoup4==4.6.0
+bitarray==0.8.1
+blaze==0.10.1
+bleach==1.5.0
+bokeh==0.12.5
+boto==2.46.1
+Bottleneck==1.2.1
+cffi==1.10.0
+chardet==3.0.3
+chest==0.2.3
+click==6.7
+cloudpickle==0.2.2
+clyent==1.2.2
+colorama==0.3.9
+comtypes==1.1.2
+conda==4.3.30
+conda-build==2.0.2
+configobj==5.0.6
+contextlib2==0.5.5
+cryptography==1.8.1
+cycler==0.10.0
+Cython==0.25.2
+cytoolz==0.8.2
+dask==0.14.3
+datashape==0.5.4
+decorator==4.0.11
+dill==0.2.5
+distributed==1.16.3
+Django==2.1.1
+docutils==0.13.1
+dynd===c328ab7
+entrypoints==0.2.2
+et-xmlfile==1.0.1
+fastcache==1.0.2
+filelock==2.0.6
+flake8==3.5.0
+flake8-docstrings==1.3.0
+flake8-polyfill==1.0.2
+Flask==0.12.2
+Flask-Cors==3.0.2
+gevent==1.2.1
+greenlet==0.4.12
+h5py==2.7.0
+HeapDict==1.0.0
+html5lib==0.999
+idna==2.5
+imagesize==0.7.1
+interpolation==2.0.1
+ipykernel==4.6.1
+ipython==5.3.0
+ipython-genutils==0.2.0
+ipywidgets==6.0.0
+isort==4.2.5
+itsdangerous==0.24
+jdcal==1.3
+jedi==0.10.2
+Jinja2==2.9.6
+jsonschema==2.6.0
+jupyter==1.0.0
+jupyter-client==5.0.1
+jupyter-console==5.1.0
+jupyter-core==4.3.0
+lazy-object-proxy==1.2.2
+llvmlite==0.26.0
+locket==0.2.0
+lxml==3.7.3
+MarkupSafe==0.23
+matplotlib==2.0.2
+mccabe==0.6.1
+menuinst==1.4.7
+mistune==0.7.4
+mpmath==0.19
+msgpack-python==0.4.8
+multipledispatch==0.4.9
+navigator-updater==0.1.0
+nb-anacondacloud==1.2.0
+nb-conda==2.0.0
+nb-conda-kernels==2.0.0
+nbconvert==5.1.1
+nbformat==4.3.0
+nbpresent==3.0.2
+networkx==1.11
+nltk==3.2.3
+nose==1.3.7
+notebook==5.0.0
+numba==0.41.0
+numexpr==2.6.2
+numpy==1.12.1
+numpydoc==0.6.0
+odo==0.5.0
+olefile==0.44
+openpyxl==2.4.7
+packaging==16.8
+pandas==0.20.1
+pandocfilters==1.4.1
+partd==0.3.8
+path.py==10.3.1
+pathlib2==2.2.1
+patsy==0.4.1
+pep8==1.7.0
+pickleshare==0.7.4
+Pillow==4.1.1
+pkginfo==1.3.2
+ply==3.10
+prompt-toolkit==1.0.14
+psutil==5.2.2
+py==1.4.33
+pyasn1==0.1.9
+pycodestyle==2.3.1
+pycosat==0.6.2
+pycparser==2.17
+pycrypto==2.6.1
+pycurl==7.43.0
+pydocstyle==2.1.1
+pyflakes==1.6.0
+Pygments==2.2.0
+pylint==1.6.4
+pyodbc==4.0.16
+pyOpenSSL==17.0.0
+pyparsing==2.1.4
+pytest==3.0.7
+python-dateutil==2.6.0
+pytz==2017.2
+PyWavelets==0.5.2
+pywin32==220
+PyYAML==3.12
+pyzmq==16.0.2
+QtAwesome==0.4.4
+qtconsole==4.3.0
+QtPy==1.2.1
+quantecon==0.4.3
+requests==2.14.2
+rope-py3k==0.9.4.post1
+scikit-image==0.13.0
+scikit-learn==0.18.1
+scipy==1.2.0
+seaborn==0.7.1
+simplegeneric==0.8.1
+singledispatch==3.4.0.3
+six==1.10.0
+snowballstemmer==1.2.1
+sockjs-tornado==1.0.3
+sortedcollections==0.5.3
+sortedcontainers==1.5.7
+sphinx==1.5.6
+spyder==3.1.4
+SQLAlchemy==1.1.9
+statsmodels==0.8.0
+sympy==1.0
+tables==3.2.2
+tblib==1.3.2
+testpath==0.3
+toolz==0.8.2
+tornado==4.5.1
+traitlets==4.3.2
+unicodecsv==0.14.1
+virtualenv==16.4.3
+wcwidth==0.1.7
+Werkzeug==0.12.2
+widgetsnbextension==2.0.0
+win-unicode-console==0.5
+wrapt==1.10.10
+xlrd==1.0.0
+XlsxWriter==0.9.6
+xlwings==0.10.4
+xlwt==1.2.0
+zict==0.1.2
+PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django> pip install virtualenv
+Requirement already satisfied: virtualenv in c:\users\lenovo\anaconda3\lib\site-packages (16.4.3)
+PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django> virtualenv .
+Using base prefix 'c:\\users\\lenovo\\anaconda3'
+  No LICENSE.txt / LICENSE found in source
+New python executable in C:\Users\lenovo\DOCUME~1\PYTHON~2\PYTHON~1\Scripts\python.exe
+Installing setuptools, pip, wheel...
+done.
+PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django> ./Scripts/activate
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django> ls
+
+
+    Directory: C:\Users\lenovo\Documents\Python-Django Projects\Python-Django
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       31/12/2018     22:49                Include
+d-----       10/03/2019     15:50                Lib
+d-----       10/03/2019     15:50                Scripts
+d-----       10/03/2019     15:50                tcl
+-a----       10/03/2019     15:45           8946 Commondhistory.txt
+-a----       10/03/2019     14:10             55 README.md
+
+
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django> pip freeze
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django>
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django> deactivate
+
+
+###### Step 3 installing Django #############
+
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django> pip install django
+Collecting django
+  Downloading https://files.pythonhosted.org/packages/c7/87/fbd666c4f87591ae25b7bb374298e8629816e87193c4099d3608ef11fab9/Django-2.1.7-py3-none-any.whl (7.3MB)
+    100% |████████████████████████████████| 7.3MB 828kB/s
+Collecting pytz (from django)
+  Downloading https://files.pythonhosted.org/packages/61/28/1d3920e4d1d50b19bc5d24398a7cd85cc7b9a75a490570d5a30c57622d34/pytz-2018.9-py2.py3-none-any.whl (510kB)
+    100% |████████████████████████████████| 512kB 1.4MB/s
+Installing collected packages: pytz, django
+Successfully installed django-2.1.7 pytz-2018.9
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django> pip freeze
+Django==2.1.7
+pytz==2018.9
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django> ls
+
+
+    Directory: C:\Users\lenovo\Documents\Python-Django Projects\Python-Django
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       31/12/2018     22:49                Include
+d-----       10/03/2019     15:50                Lib
+d-----       10/03/2019     16:12                Scripts
+d-----       10/03/2019     15:50                tcl
+-a----       10/03/2019     15:55          13951 Commondhistory.txt
+-a----       10/03/2019     14:10             55 README.md
+
+
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django> ls
+
+
+    Directory: C:\Users\lenovo\Documents\Python-Django Projects\Python-Django
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       31/12/2018     22:49                Include
+d-----       10/03/2019     15:50                Lib
+d-----       10/03/2019     16:12                Scripts
+d-----       10/03/2019     15:50                tcl
+-a----       10/03/2019     16:12          15618 Commondhistory.txt
+-a----       10/03/2019     14:10             55 README.md
+
+
+##### Step 4 Building Django Project ############
+
+
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django> mkdir djangoproject
+
+
+    Directory: C:\Users\lenovo\Documents\Python-Django Projects\Python-Django
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       10/03/2019     16:13                djangoproject
+
+
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django> cd .\djangoproject\
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django\djangoproject> django-admin startproject mysite .
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django\djangoproject> ls
+
+
+    Directory: C:\Users\lenovo\Documents\Python-Django Projects\Python-Django\djangoproject
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       10/03/2019     16:25                mysite
+-a----       10/03/2019     16:25            553 manage.py
+
+
+##### Launching the django project ##########
+
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django\djangoproject>
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django\djangoproject> python manage.py runserver
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+You have 15 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
+March 10, 2019 - 16:32:03
+Django version 2.1.7, using settings 'mysite.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[10/Mar/2019 16:32:20] "GET / HTTP/1.1" 200 16348
+[10/Mar/2019 16:32:20] "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+[10/Mar/2019 16:32:21] "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+[10/Mar/2019 16:32:21] "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+[10/Mar/2019 16:32:21] "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+Not Found: /favicon.ico
+[10/Mar/2019 16:32:22] "GET /favicon.ico HTTP/1.1" 404 1972
+
+
+###### once the django server is started running then we can't run any commond, so we have to open new powershell without administrator ####
+
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\lenovo> cd .\Documents\
+PS C:\Users\lenovo\Documents> cd '.\Python-Django Projects\'
+PS C:\Users\lenovo\Documents\Python-Django Projects> cd .\Python-Django\
+PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django> .\Scripts\activate
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django> cd .\djangoproject\
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django\djangoproject> ls
+
+
+    Directory: C:\Users\lenovo\Documents\Python-Django Projects\Python-Django\djangoproject
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       10/03/2019     16:32                mysite
+-a----       10/03/2019     16:32              0 db.sqlite3
+-a----       10/03/2019     16:25            553 manage.py
+
+
+
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django\djangoproject> python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying sessions.0001_initial... OK
+
+  
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django\djangoproject> python manage.py createsuperuser
+Username (leave blank to use 'lenovo'): admin
+Email address: alexnimbush999@gmail.com
+Password: admin12345
+Password (again): admin12345
+Superuser created successfully.
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django\djangoproject>
+
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django\djangoproject> ls
+
+
+    Directory: C:\Users\lenovo\Documents\Python-Django Projects\Python-Django\djangoproject
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       10/03/2019     16:32                mysite
+-a----       10/03/2019     16:46          40960 db.sqlite3
+-a----       10/03/2019     16:25            553 manage.py
+
+
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django\djangoproject> python manage.py startapp pages
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django\djangoproject> ls
+
+
+    Directory: C:\Users\lenovo\Documents\Python-Django Projects\Python-Django\djangoproject
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       10/03/2019     16:32                mysite
+d-----       10/03/2019     16:53                pages
+-a----       10/03/2019     16:46          40960 db.sqlite3
+-a----       10/03/2019     16:25            553 manage.py
+
+
+(Python-Django) PS C:\Users\lenovo\Documents\Python-Django Projects\Python-Django\djangoproject>
