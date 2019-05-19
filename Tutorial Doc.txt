@@ -1,0 +1,333 @@
+Ref: https://www.youtube.com/watch?v=F5mRW0jo-U4
+# we will be using powershell in windows to execute the below command
+***** Setup the djnago project *****
+
+Create a folder as trydjango
+> mkdir trydjango
+
+Move to trydjango folder
+> cd trydjango
+
+Check for Python (it should be 3.5 or more)
+> python -V
+
+Create virtual env inside the trydjango folder (This will take little longer time)
+> virtualenv -p python .
+
+activate the virtual env
+trydjango> .\Scripts\actiavte
+
+propmt will get change
+(trydjango) trydjango>
+
+now installing django 2.0.7
+(trydjango) trydjango> pip install django==2.0.7
+
+#######################
+for deactivating the virtual env (not required now)
+(trydjango) trydjango> deactivate
+This will return to 
+trydjango>
+#######################
+
+for freezing the env
+(trydjango) trydjango> pip freeze
+
+
+***** create a django project *****
+
+test the django-admin in project folder
+(trydjango) trydjango> django-admin
+This will open the django-admin commonds and help
+
+create a src(source) folder which will have all the project-app files
+(trydjango) trydjango> mkdir src
+
+move to src folder
+(trydjango) trydjango> cd src
+
+now start a project with same name or different name
+(trydjango) trydjango\src> django-admin startproject trydjango .
+this will create a trydjango folder with manage.py in src folder
+
+
+we can start the django server to land on default django page through manage.py.
+(trydjango) trydjango\src> python .\manage.py runserver
+
+
+
+
+***** Settings *****
+We can walk through the setting.py file in src\trydjango folder.
+run the below command to integrate all the settings with our django projects.
+(trydjango) trydjango\src> python .\manage.py migrate
+this will update the db.sqlite3 database with django settings.
+
+we can change DATABASES code in setting.py and run the above command, then it will create another database in src folder.
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db2.sqlite3'), # change db.sqlite3 to db2.sqlite3
+    }
+}
+
+
+
+***** Built-In Components (Create first APP) *****
+try 127.0.0.1:8000/admin/ in browser, It will open an login page which require username and password.
+hence, we need to create superuser first, before that make sure migration is completed successfully using below command.
+(trydjango) trydjango\src> python ./manage.py migrate
+this should display all migrations, No migration to apply message.
+
+then we will create superuser
+(trydjango) trydjango\src> python ./manage.py createsuperuser
+Username (leave blank to use 'systemname'): agrahari
+Email address: akagr.cse@gmail.com
+Password: india123
+Password (again): india123
+
+
+2nd user created through UI as
+Username: test
+Password: password123
+
+All the above feature is supported by admin and auth (installed APP)
+
+
+
+
+
+***** Our first App Component *****
+pwd in powershell should be in folder where manage.py exists.
+
+now create products, blog, profiles and cart app just for testing purpose.
+(trydjango) trydjango\src> python .\manage.py startapp products
+(trydjango) trydjango\src> python .\manage.py startapp blog
+(trydjango) trydjango\src> python .\manage.py startapp profiles
+(trydjango) trydjango\src> python .\manage.py startapp cart
+now we can check each app folder and understand it's structure.
+
+we can delete blog, profiles, and cart.
+(trydjango) trydjango\src> rm .\cart\
+(trydjango) trydjango\src> rm .\blog\
+(trydjango) trydjango\src> rm .\profiles\
+So, only product will be available where we can play around as of now.
+
+
+open models.py in products folder.
+create a class as Product with title, description and price in models.py of products app.
+class Product(models.Model):
+    title       = models.TextField()
+    description = models.TextField()
+    price       = models.TextField()
+    summary     = models.TextField(default="Ihis is cool!")
+
+now include products app in installed app in setting.py
+
+run the makemigrations command to include products and then migrate
+(trydjango) trydjango\src> python .\manage.py makemigrations
+this will create model product
+(trydjango) trydjango\src> python .\manage.py migrate
+this will include products in settings.
+
+run the both the above command makemigrations and migrate again to check all is going well.
+
+Note# after every time doing changes in models.py files we need to run makemigrations and migrate command.
+
+Now open admin.py where we need to import Product class which we have created in models.py
+from .models import Product
+
+then update the admin site register of products with Product class.
+admin.site.register(Product)
+
+
+
+***** Create Product Objects in the Python shell *****
+
+we can open python shell interpretor in powershell to create product. this will allows us to write import and create command.
+(trydjango) trydjango\src> python .\manage.py shell
+this will open python terminal.
+python>>> 
+
+Now import Product from products.models
+python>>> from products.models import Product
+python>>> Product.objects.all()  # check all available products.
+creating new product through python command
+python>>> Product.objects.create(title = 'New Product 2', description ='another one', price = '19878', summary = 'sweets')
+new Product object will be created.
+
+Now run teh below command to check all products.
+python>>> Product.objects.all()
+
+run exit() to close the local python.
+python>>>exit()
+
+
+***** New Model Field *****
+Till now we have used only models.TextField() in models.py under products. But now we will try different field type for the same. before that, we will delete 0001_initial.py, 0002_product_summary.py and _pycache_ folder under products->migrations.
+And also delete db.sqllite3 database under src->trydjango folder
+
+now we will update models file in products as
+class Product(models.Model):
+    # newer variable with correct Field type
+    title       = models.CharField(max_length = 100)
+    description = models.TextField(blank=True, null=True)
+    price       = models.DecimalField(decimal_places=2, max_digits=1000)
+    summary     = models.TextField()
+    
+    # older variables.
+    #title       = models.TextField()
+    #description = models.TextField()
+    #price       = models.TextField()
+    #summary     = models.TextField(default="Ihis is cool!")
+
+Then run makemigrations then migrate commond to include the changes.
+As, we have deleted the database, so we need to create superuser again.
+(trydjango) trydjango\src> python ./manage.py createsuperuser
+Username (leave blank to use 'systemname'): agrahari
+Email address: akagr.cse@gmail.com
+Password: india123
+Password (again): india123
+
+
+
+***** Change a Model *****
+
+if you want to change the model by adding new variable then 
+add new variable in class in models.py of product and then
+run makemigrations and migrate command to include the change in database.
+
+# adding featured variable in Product model.
+class Product(models.Model):
+    title       = models.CharField(max_length = 100)
+    description = models.TextField(blank=True, null=True) # blank: True - field input is required, False - field is optional
+    price       = models.DecimalField(decimal_places=2, max_digits=1000)
+    summary     = models.TextField()
+    featured    = models.BooleanField(default=True)
+
+# blank: True - field input is required, False - field is optional
+# null: True - database can have blank, False - database can't be blank.
+
+(trydjango) trydjango\src> python .\manage.py makemigrations
+(trydjango) trydjango\src> python .\manage.py migrate
+
+now, changes will be reflect on UI.
+
+
+***** Default homepage to custom homepage *****
+
+create a app called pages in src using
+(trydjango) trydjango\src> python .\manage.py startapp pages
+
+open views.py file in pages folder and edit to build html pages.
+# include import HttpResponse from http class to create webpage.
+from django.http import HttpResponse  
+
+# add home_view function to return HttpResponse of HTML code
+def home_view(*args, **kwargs):
+    return HttpResponse("<h1>Hello World, This is Ashutosh! :-)</h1>") # string of HTML code
+
+Then open src-> trydjango -> urls.py and add home_view from pages-views.py to url
+
+from django.contrib import admin
+from django.urls import path
+from pages.views import home_view                 # call home_view function from folder pages -> views.py 
+# like above we can call views function directly in urls.py
+
+urlpatterns = [
+    path('', home_view, name='home'), # add path of home_view function
+    path('admin/', admin.site.urls),
+]
+
+This will automatically reflect the Ui changes in browser, no need to run any query. only server should be running.
+
+
+
+***** URL Routing and Requests *****
+
+we can add more view functions as home_view below.... in pages -> views.py
+from django.http import HttpResponse  # import HttpResponse from http class to create webpage.
+from django.shortcuts import render
+
+# Create your views here.
+def home_view(request, *args, **kwargs):
+    print(request.user)     # request.user will return logged user or AnonymousUser
+    return HttpResponse("<h1>Hello World, This is Ashutosh! :-)</h1>") # string of HTML code
+
+
+def about_view(request,*args, **kwargs):
+    return HttpResponse("<h1>about page</h1>") # string of HTML code
+
+
+def contact_view(request,*args, **kwargs):
+    return HttpResponse("<h1>contact page</h1>") # string of HTML code
+
+
+def support_view(request,*args, **kwargs):
+    return HttpResponse("<h1>support page</h1>") # string of HTML code
+
+
+# now we need to update the trydjango -> urls.py to route those view UI pages.
+
+from pages.views import home_view, about_view, contact_view, support_view        # call HttpReponse function from folder pages -> views.py 
+
+urlpatterns = [
+    path('', home_view, name='home'),
+    path('home/', home_view),
+    path('about/', about_view),
+    path('contact/', contact_view),
+    path('support/', support_view),
+    path('admin/', admin.site.urls),
+]
+
+This will automatically reflect the Ui changes in browser, no need to run any query. only server should be running.
+
+
+
+
+
+***** Django templates *****
+
+#first go to pages -> views.py and comment the HttpResponse return line. for that, write another return with render function call.
+
+def home_view(request, *args, **kwargs):    
+    #return HttpResponse("<h1>Hello World, This is Ashutosh! :-)</h1>") # string of HTML code
+    return render(request, "home.html", {})  # like this we can call the html template in views.py
+
+#then,
+create a templates folder in src and then create home.html inside that with below html code.
+
+<h1>Hello World, this is ashutosh! :-)</h1>
+<p>this is a template</p>
+
+# same as above, we can create for about, contact and social also.
+
+# now we need to provide the path of templates folder in setting.py of trydjango.
+# we will update templates path in DIRS key value pair inside TEMPLATES.
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, "templates")],           # here path need to provide.
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+
+
+***** Django Templating Engine Basic *****
+
+(trydjango) trydjango\src>
+(trydjango) trydjango\src>
+(trydjango) trydjango\src>
+
+
+
+ 
