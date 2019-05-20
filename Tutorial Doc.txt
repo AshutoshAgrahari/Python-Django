@@ -320,9 +320,343 @@ TEMPLATES = [
     },
 ]
 
+This will automatically reflect the Ui changes in browser, no need to run any query. only server should be running.
+
+
+
 
 
 ***** Django Templating Engine Basic *****
+
+# open home.html and update code as 
+
+<h1>Hello World, this is ashutosh! :-)</h1>
+{{ request.user }}  # this will print logged username
+{{ request.user.is_authenticated }} # this will print whether logged user is authenticated or not.
+<p>this is a template</p>
+
+
+# if we want ot share the common html template to all the pages then, we needs to create a base.html under templates folders.
+open base.html and write below html code...
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ashutosh is doing try Django</title>
+    </head>
+    <body>    
+        {% block content %}
+            HTML code
+        {% endblock %}        
+    </body>
+</html>
+
+
+# this block can be used to create html code in other html file with extending base.html as template.
+{% block content %}
+    HTML code
+{% endblock %}
+
+# like open home.html and update the file with....
+
+{% extends 'base.html' %}  # extends base.html will help to have common template available to all the pages.
+{% block content %}
+    <h1>Hello World, this is ashutosh! :-)</h1>
+    {{ request.user }}
+    {{ request.user.is_authenticated }}
+    <p>this is a template</p>
+{% endblock %}
+
+# then refresh the browser, change can seeing in the website title.
+# same change should be done in about, contact and social.html files as well.
+
+
+# open the base.html and add navbar
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ashutosh is doing try Django</title>
+    </head>
+    <body>
+        <h1>This is navbar</h1>   # this is common to all pages.
+        {% block content %}
+            replace me
+        {% endblock %}                
+    </body>
+</html>
+
+This will automatically reflect the Ui changes in browser, no need to run any query. only server should be running.
+
+
+
+
+
+
+***** Include Template Tag *****
+
+If we want to create some navbar content common to all page, then we can create a html file and use using include in our base.html.
+
+# create a navbar.html file in template with below code...
+
+<nav>
+    <ul>
+        <li>Brand</li>
+        <li>Content</li>
+        <li>About</li>
+    </ul>
+</nav>
+
+
+# now include navbar.html in base.html like below to reflect the changes in all the pages.
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ashutosh is doing try Django</title>
+    </head>
+    <body>
+        {% include 'navbar.html' %}   # change
+        
+        {% block content %}
+            replace me
+        {% endblock %}                
+    </body>
+</html>
+
+This will automatically reflect the Ui changes in browser, no need to run any query. only server should be running.
+
+
+
+
+***** Rendering Context in a Template *****
+
+Now we will update views.py under pages folder....
+
+older code...
+
+from django.http import HttpResponse  # import HttpResponse from http class to create webpage.
+from django.shortcuts import render
+
+# Create your views here.
+def home_view(request, *args, **kwargs):
+    print(request.user)     # request.user will return logged user or AnonymousUser
+    #return HttpResponse("<h1>Hello World, This is Ashutosh! :-)</h1>") # string of HTML code
+    return render(request, "home.html", {})  # like this we can call the html template in views.py
+
+def about_view(request,*args, **kwargs):
+    #return HttpResponse("<h1>about page</h1>") # string of HTML code
+    return render(request, "about.html", {})
+
+
+def contact_view(request,*args, **kwargs):
+    #return HttpResponse("<h1>contact page</h1>") # string of HTML code    
+    return render(request, "contact.html", {})
+
+
+def social_view(request,*args, **kwargs):
+    #return HttpResponse("<h1>social page</h1>") # string of HTML code
+    return render(request, "social.html", {})
+
+...................................
+
+# New Code aftre the update.... (With change in def about_view())
+
+from django.http import HttpResponse  # import HttpResponse from http class to create webpage.
+from django.shortcuts import render
+
+# Create your views here.
+def home_view(request, *args, **kwargs):
+    print(request.user)     # request.user will return logged user or AnonymousUser
+    #return HttpResponse("<h1>Hello World, This is Ashutosh! :-)</h1>") # string of HTML code
+    return render(request, "home.html", {})  # like this we can call the html template in views.py
+
+def about_view(request,*args, **kwargs):
+    #return HttpResponse("<h1>about page</h1>") # string of HTML code
+    my_context = {
+        "my_text": "This is about us",
+        "my_number": 123
+    }
+    return render(request, "about.html", my_context)
+
+
+def contact_view(request,*args, **kwargs):
+    #return HttpResponse("<h1>contact page</h1>") # string of HTML code    
+    return render(request, "contact.html", {})
+
+
+def social_view(request,*args, **kwargs):
+    #return HttpResponse("<h1>social page</h1>") # string of HTML code
+    return render(request, "social.html", {})
+
+
+
+# Open about.html page and call my_text and my_number
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>About :-)</h1>
+<p>this is a template</p>
+
+<p>
+    {{my_text}}, {{my_number}}
+</p>
+{% endblock %}
+
+
+This will automatically reflect the changes in about UI page in browser, no need to run any query. only server should be running.
+
+
+
+
+
+***** For Loop in a Template  *****
+
+# Now we will create a list in about_view def in views.py file in pages. 
+
+# views.py in pages folder
+def about_view(request,*args, **kwargs):
+    #return HttpResponse("<h1>about page</h1>") # string of HTML code
+    my_context = {
+        "my_text": "This is about us",
+        "my_number": 123,
+        "my_list": [123,12,335,67567]
+    }
+    return render(request, "about.html", my_context)
+
+
+
+# we will call {{my_list}} using for loop in about.html
+# about.page....
+
+{% extends 'base.html' %}  # extending base html template
+
+{% block content %}  # for creating template and about html code
+<h1>About :-)</h1>
+<p>this is a template</p>
+
+# simply passing the values from views.py
+<p>
+    {{my_text}}, {{my_number}}, {{my_list}}
+</p>
+
+# generating the unordered list
+<ul>
+    <li>Item1</li>
+    <li>Item2</li>
+</ul>
+
+# this is create run time unordered list in html page passed from views.py
+<ul>
+{% for my_sub_item in my_list %}    # opening the for loop
+    <li>{{ my_sub_item }}</li>
+{% endfor %}                        # closing the for loop
+</ul>
+
+
+<ul>
+{% for my_sub_item in my_list %}
+    <li>{{ forloop.counter }}-{{ my_sub_item }}</li>  # this will print the order of list items.
+{% endfor %} 
+</ul>
+{% endblock %}  # closing the html block
+
+This will automatically reflect the changes in about UI page in browser, no need to run any query. only server should be running.
+
+
+# my_list is keep on editing and the changes will be reflecting to browser automatically like below.
+
+my_context = {
+    "my_text": "This is about us",
+    "my_number": 123,
+    "my_list": [12454,123,12,335,67567,"ABC"]
+}
+
+
+
+
+***** Using Conditions in a Template  *****
+
+# edit the about.html to implement condition (if else) in html
+
+<ul>
+{% for abc in my_list %}
+    {% if abc == 123 %}   # starting the if condition
+        <li>{{ forloop.counter }}-{{ abc|add:22 }}</li>   # abc|add:22 will add 22 to 123.
+    {% elif abc == 'ABC' %}         # else if is written as elif in python django
+        <li>This is not the network.</li>
+    {% else %}
+        <li>{{ forloop.counter }}-{{ abc }}</li>
+    {% endif %}     # condition needs to close by endif
+{% endfor %} 
+</ul>
+
+
+This will automatically reflect the changes in about UI page in browser, no need to run any query. only server should be running.
+
+
+
+
+
+***** Template Tags and Filters  *****
+
+# Template tags are extends, block, endblock, if, elif, endif and for, endfor which is used in about.html using {{% template_tag %}} like below .....
+
+
+{% extends 'base.html' %}
+{% block content %}
+<h1>About :-)</h1>
+<p>this is a template</p>
+
+<p>
+    {{my_text}}, {{my_number}}, {{my_list}}
+</p>
+
+<ul>
+{% for abc in my_list %}
+    {% if abc == 123 %}
+        <li>{{ forloop.counter }}-{{ abc|add:22 }}</li>
+    {% elif abc == 'ABC' %}
+        <li>This is not the network.</li>
+    {% else %}
+        <li>{{ forloop.counter }}-{{ abc }}</li>
+    {% endif %}    
+{% endfor %} 
+</ul>
+
+{% endblock %}
+
+
+
+# https://docs.djangoproject.com/en/2.2/ref/templates/builtins/#safe
+
+{{ abc|add:22 }} pipe is build in filter. there are lots of built in filter available ot use.
+
+This will automatically reflect the changes in about UI page in browser, no need to run any query. only server should be running.
+
+
+
+
+
+
+***** Text  *****
+
+This will automatically reflect the changes in about UI page in browser, no need to run any query. only server should be running.
+
+***** Text  *****
+
+This will automatically reflect the changes in about UI page in browser, no need to run any query. only server should be running.
+
+***** Text  *****
+
+This will automatically reflect the changes in about UI page in browser, no need to run any query. only server should be running.
+
+***** Text  *****
+
+
+
 
 (trydjango) trydjango\src>
 (trydjango) trydjango\src>
