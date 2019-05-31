@@ -1,0 +1,83 @@
+Setup:
+
+1. Install Python
+2. Install Django throup PIP
+3. Create project django project at any location
+> django-admin startproject BS4Project
+4. Create app in BS4Project folder through
+> django-admin startapp home
+5. write below code in home/views.py 
+
+from django.shortcuts import render
+from django.http import HttpResponse  
+
+# Create your views here.
+def home_view(*args, **kwargs):
+    return HttpResponse("<h1>Hello World, This is Ashutosh! :-)</h1>")    
+
+6. Open BS4Project/urls.py and write below code
+from django.contrib import admin
+from django.urls import path
+from home.views import home_view
+
+urlpatterns = [ 
+    path('', home_view, name='home'),   
+    path('admin/', admin.site.urls),
+]
+
+7. create templates folder in BS4Project parent folder where manage.py file exist.
+8. create home.html file with below html code
+<h1>Hello World, this is ashutosh! :-)</h1>
+<p>this is a template</p>
+
+9. open BS4Project/settings.py and update the directory path for templates.
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, "templates")],  #####################################
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+10. execute below command in powershell to launch the application.
+BS4Project> python .\manage.py runserver
+
+
+########## now intergrating bootstrap theme in django application ######
+11. download a theme from https://startbootstrap.com/themes/freelancer/
+12. create a static folder in base BS4Project folder.
+13. copy css, js, img and vendor folder from downloaded theme to static folder for BS4Project.
+14. copy index.html to templates folder in BS4 Projects.
+15. update home/views.py file with below code
+
+from django.shortcuts import render
+from django.http import HttpResponse  
+
+# Create your views here.
+def home_view(request,*args, **kwargs):    
+    return render(request, "index.html", {}) 
+
+
+16. open index.html and update it 
+add on the top of html file
+{% load static %}
+
+update all the css, js, img and vendor source with "{% static "file path" %}"
+<link href="{% static "css/freelancer.min.css" %}" rel="stylesheet">
+
+
+17. open BS4Project.setting.py and add at the end of file to access all the static folder and files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),    
+]
+
+now refresh the app in browser to render the UI with bootstrap.
